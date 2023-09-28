@@ -2,8 +2,7 @@ export default async function guardrail(mathFunction) {
   const queue = [];
 
   try {
-    const result = await Promise.resolve(mathFunction());
-    queue.push(result);
+    queue.push(mathFunction());
   } catch (err) {
     queue.push(String(err));
   } finally {
