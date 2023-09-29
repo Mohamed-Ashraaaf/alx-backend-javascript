@@ -1,7 +1,10 @@
 export default function iterateThroughObject(reportWithIterator) {
-  if (Array.isArray(reportWithIterator)) {
-    return reportWithIterator.join(' | ');
+  let result = '';
+
+  for (const department in reportWithIterator.allEmployees) {
+    const employees = reportWithIterator.allEmployees[department];
+    result += employees.join(' | ') + ' | ';
   }
-  
-  return '';
+
+  return result.slice(0, -3);
 }
