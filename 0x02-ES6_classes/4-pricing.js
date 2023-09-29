@@ -1,3 +1,5 @@
+import Currency from './3-currency';
+
 export default class Pricing {
   constructor(amount, currency) {
     this.amount = amount;
@@ -9,12 +11,9 @@ export default class Pricing {
   }
 
   set amount(value) {
-    if (typeof value === 'number') {
-      this._amount = value;
-    } else {
-      throw new TypeError('Amount must be a number');
-    }
+    this._amount = value;
   }
+
 
   get currency() {
     return this._currency;
@@ -24,19 +23,21 @@ export default class Pricing {
     if (value instanceof Currency) {
       this._currency = value;
     } else {
-      throw new TypeError('Currency must be an instance of Currency class');
+      throw new TypeError('Currency must an instance of Currency');
     }
   }
 
   displayFullPrice() {
-    return `${this.amount} ${this.currency.name} (${this.currency.code})`;
+    return `${this._amount} ${this._currency.displayFullCurrency()}`;
   }
 
   static convertPrice(amount, conversionRate) {
-    if (typeof amount === 'number' && typeof conversionRate === 'number') {
-      return amount * conversionRate;
-    } else {
-      throw new TypeError('Amount and conversionRate must be numbers');
+    if (typeof amount !== 'number') {
+      throw new TypeError('Amount must be a number');
     }
+    if (typeof conversionRate !== 'number') {
+      throw new TypeError('ConversionRate must be a number');
+    }
+    return amount * conversionRate;
   }
 }
