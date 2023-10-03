@@ -7,6 +7,7 @@ export default function cleanSet(set, startString) {
     }
   }
 
+  // Remove the trailing '-' if it exists
   if (result.endsWith('-')) {
     result = result.slice(0, -1);
   }
