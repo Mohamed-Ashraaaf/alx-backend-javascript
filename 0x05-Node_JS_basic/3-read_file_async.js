@@ -1,6 +1,9 @@
 const fs = require('fs');
 
-
+/**
+ * Counts the students in CSV file
+ * @param {String} dataPath to CSV file
+ */
 const countStudents = (dataPath) => new Promise((resolve, reject) => {
   fs.readFile(dataPath, 'utf-8', (err, data) => {
     if (err) {
